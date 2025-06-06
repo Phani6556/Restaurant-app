@@ -8,7 +8,7 @@ function OrdersTable() {
 
   useEffect(() => {
     const fetchTables = () => {
-      axios.get('${apiUrl}/api/tables')
+      axios.get(`${apiUrl}/api/tables`)
         .then(res => setTables(res.data))
         .catch(err => console.error(err));
     };
