@@ -12,7 +12,7 @@ function Menu() {
 
 
   useEffect(() => {
-    axios.get('${apiUrl}/api/menu')
+    axios.get(`${apiUrl}/api/menu`)
       .then(res => setItems(res.data))
       .catch(err => console.error('Menu fetch error:', err));
   }, []);
