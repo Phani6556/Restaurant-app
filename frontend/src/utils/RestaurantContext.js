@@ -6,10 +6,12 @@ export const RestaurantContext = createContext();
 export const RestaurantProvider = ({ children }) => {
   const [orders, setOrders] = useState([]);
   const [tables, setTables] = useState([]);
+  const apiUrl = process.env.REACT_APP_API_URL;
+
 
   const fetchOrders = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/orders');
+      const response = await axios.get('${apiUrl}/api/orders');
       setOrders(response.data);
     } catch (error) {
       console.error('Failed to fetch orders:', error);
@@ -18,7 +20,7 @@ export const RestaurantProvider = ({ children }) => {
 
   const fetchTables = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/tables');
+      const response = await axios.get('${apiUrl}/api/tables');
       setTables(response.data);
     } catch (error) {
       console.error('Failed to fetch tables:', error);
