@@ -11,7 +11,7 @@ export const RestaurantProvider = ({ children }) => {
 
   const fetchOrders = async () => {
     try {
-      const response = await axios.get('${apiUrl}/api/orders');
+      const response = await axios.get(`${apiUrl}/api/orders`);
       setOrders(response.data);
     } catch (error) {
       console.error('Failed to fetch orders:', error);
@@ -20,7 +20,7 @@ export const RestaurantProvider = ({ children }) => {
 
   const fetchTables = async () => {
     try {
-      const response = await axios.get('${apiUrl}/api/tables');
+      const response = await axios.get(`${apiUrl}/api/tables`);
       setTables(response.data);
     } catch (error) {
       console.error('Failed to fetch tables:', error);
