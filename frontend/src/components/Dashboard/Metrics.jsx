@@ -7,8 +7,8 @@ import {
   MdFastfood,
   MdPeopleAlt,
 } from 'react-icons/md';
-
-const socket = io('http://localhost:8000');
+const apiUrl = process.env.REACT_APP_API_URL;
+const socket = io(apiUrl);
 
 function Metrics() {
   const [metrics, setMetrics] = useState({
@@ -17,9 +17,9 @@ function Metrics() {
     totalOrders: 0,
     totalClients: 0,
   });
-
+  const apiUrl = process.env.REACT_APP_API_URL;
   const fetchMetrics = async () => {
-    const res = await axios.get('http://localhost:8000/api/dashboard/metrics');
+    const res = await axios.get('${apiUrl}/api/dashboard/metrics');
     setMetrics(res.data);
   };
 
@@ -34,7 +34,7 @@ function Metrics() {
   }, []);
 
   useEffect(() => {
-    fetch('http://localhost:8000/api/dashboard/clients/count')
+    fetch('${apiUrl}/api/dashboard/clients/count')
       .then(res => res.json())
       .then(data => {
         setMetrics(prev => ({ ...prev, totalClients: data.totalClients }));
