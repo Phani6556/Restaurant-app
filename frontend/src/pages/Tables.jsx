@@ -21,7 +21,7 @@ function Tables() {
   }, []);
   useEffect(() => {
    const apiUrl = process.env.REACT_APP_API_URL;
-  const socket = io('apiUrl');
+  const socket = io(apiUrl);
   socket.on('tableStatusUpdated', ({ tableId, status }) => {
     setTables(prev =>
       prev.map(table =>
