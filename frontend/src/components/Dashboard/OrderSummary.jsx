@@ -4,6 +4,7 @@ import { PieChart, Pie, Cell, Tooltip } from 'recharts';
 function OrderSummary({ orders }) {
   const [data, setData] = useState([]);
   const COLORS = ['#4caf50', '#2196f3', '#ff9800'];
+  
 
   useEffect(() => {
     if (orders) {
