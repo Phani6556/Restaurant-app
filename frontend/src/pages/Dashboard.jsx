@@ -25,7 +25,7 @@ function Dashboard() {
 
   const fetchTables = async () => {
     try {
-      const res = await axios.get('${apiUrl}/api/tables');
+      const res = await axios.get(`${apiUrl}/api/tables`);
       setTables(res.data);
     } catch (err) {
       console.error('Error loading tables:', err);
@@ -35,7 +35,7 @@ function Dashboard() {
 
  const fetchFilteredData = useCallback(async () => {
    try {
-     const res = await axios.get('${apiUrl}/api/dashboard/chef-summary');
+     const res = await axios.get(`${apiUrl}/api/dashboard/chef-summary`);
      console.log('👨‍🍳 Chef Summary API response:', res.data);
      setChefs(res.data.chefs || []);
    } catch (err) {
@@ -46,7 +46,7 @@ function Dashboard() {
 
   const fetchSummary = async () => {
     try {
-      const res = await axios.get('${apiUrl}/api/dashboard/order-summary');
+      const res = await axios.get(`${apiUrl}/api/dashboard/order-summary`);
       setSummaryData(res.data);
     } catch (err) {
       console.error('Error fetching summary data:', err);
@@ -56,7 +56,7 @@ function Dashboard() {
 
   const fetchDailyRevenue = async () => {
     try {
-      const res = await axios.get('${apiUrl}/api/dashboard/daily-revenue');
+      const res = await axios.get(`${apiUrl}/api/dashboard/daily-revenue`);
       setDailyRevenue(res.data);
     } catch (err) {
       console.error('Error fetching daily revenue:', err);
