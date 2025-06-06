@@ -40,7 +40,7 @@ function Orders() {
 
   useEffect(() => {
     const apiUrl = process.env.REACT_APP_API_URL;
-    const socket = io(apiUrl); // for socket.io
+    const socket = io('apiUrl'); // for socket.io
       socket.on('orderUpdate', (newOrder) => {
         setOrders(prevOrders => {
           const exists = prevOrders.some(o => o._id === newOrder._id);
