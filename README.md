@@ -89,3 +89,5 @@ npm install
 
 # Start development server
 npm start
+
+Restaurant Demo link - https://restaurant-app-coral-mu.vercel.app/
