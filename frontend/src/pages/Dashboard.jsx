@@ -20,10 +20,12 @@ function Dashboard() {
   const [dailyRevenue, setDailyRevenue] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const apiUrl = process.env.REACT_APP_API_URL;
+
 
   const fetchTables = async () => {
     try {
-      const res = await axios.get('http://localhost:8000/api/tables');
+      const res = await axios.get('${apiUrl}/api/tables');
       setTables(res.data);
     } catch (err) {
       console.error('Error loading tables:', err);
@@ -33,7 +35,7 @@ function Dashboard() {
 
  const fetchFilteredData = useCallback(async () => {
    try {
-     const res = await axios.get('http://localhost:8000/api/dashboard/chef-summary');
+     const res = await axios.get('${apiUrl}/api/dashboard/chef-summary');
      console.log('👨‍🍳 Chef Summary API response:', res.data);
      setChefs(res.data.chefs || []);
    } catch (err) {
@@ -44,7 +46,7 @@ function Dashboard() {
 
   const fetchSummary = async () => {
     try {
-      const res = await axios.get('http://localhost:8000/api/dashboard/order-summary');
+      const res = await axios.get('${apiUrl}/api/dashboard/order-summary');
       setSummaryData(res.data);
     } catch (err) {
       console.error('Error fetching summary data:', err);
@@ -54,7 +56,7 @@ function Dashboard() {
 
   const fetchDailyRevenue = async () => {
     try {
-      const res = await axios.get('http://localhost:8000/api/dashboard/daily-revenue');
+      const res = await axios.get('${apiUrl}/api/dashboard/daily-revenue');
       setDailyRevenue(res.data);
     } catch (err) {
       console.error('Error fetching daily revenue:', err);
@@ -77,7 +79,8 @@ function Dashboard() {
   }, [fetchFilteredData]);
 
  useEffect(() => {
-   const socket = io('http://localhost:8000');
+   const apiUrl = process.env.REACT_APP_API_URL;
+   const socket = io(apiUrl);
 
    socket.on('orderUpdate', () => {
       console.log('📡 orderUpdate received');
