@@ -1,0 +1,22 @@
+
+.page-heading-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f4f6f8;
+}
+
+.main-heading {
+  font-size: 7rem;
+  color: #2c3e50;
+  font-weight: bold;
+  text-align: center;
+ animation: fadeIn 1s ease-in-out;
+}
+
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
