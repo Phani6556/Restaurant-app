@@ -21,7 +21,7 @@ function Tables() {
   }, []);
   useEffect(() => {
    const apiUrl = process.env.REACT_APP_API_URL;
-  const socket = io('apiUrl');
+  const socket = io(apiUrl);
   socket.on('tableStatusUpdated', ({ tableId, status }) => {
     setTables(prev =>
       prev.map(table =>
@@ -54,7 +54,7 @@ function Tables() {
     const { name, chairs } = newTable;
     if (chairs > 0) {
       const tableName = name.trim() !== '' ? name : `Table ${tables.length + 1}`;
-      axios.post('${apiUrl}/api/tables', {
+      axios.post(`${apiUrl}/api/tables`, {
         name: tableName,
         chairs,
         status: 'Available',
@@ -70,7 +70,7 @@ function Tables() {
 
   const handleDeleteTable = (id) => {
     if (window.confirm('Delete this table?')) {
-      axios.delete('${apiUrl}/api/tables/${id}`)
+      axios.delete(`${apiUrl}/api/tables/${id}`)
         .then(() => {
           fetchTables();
           toast.success('Table deleted.');
@@ -81,7 +81,7 @@ function Tables() {
 
   const toggleStatus = (table) => {
     const newStatus = table.status === 'Available' ? 'Reserved' : 'Available';
-    axios.patch('${apiUrl}'/api/tables/${table._id}/status`, { status: newStatus })
+    axios.patch(`${apiUrl}/api/tables/${table._id}/status`, { status: newStatus })
       .then(() => {
         fetchTables();
         toast.info(`Status changed to ${newStatus}`);
