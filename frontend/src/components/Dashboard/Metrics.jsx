@@ -19,7 +19,7 @@ function Metrics() {
   });
   const apiUrl = process.env.REACT_APP_API_URL;
   const fetchMetrics = async () => {
-    const res = await axios.get('${apiUrl}/api/dashboard/metrics');
+    const res = await axios.get(`${apiUrl}/api/dashboard/metrics`);
     setMetrics(res.data);
   };
 
@@ -34,7 +34,7 @@ function Metrics() {
   }, []);
 
   useEffect(() => {
-    fetch('${apiUrl}/api/dashboard/clients/count')
+    fetch(`${apiUrl}/api/dashboard/clients/count`)
       .then(res => res.json())
       .then(data => {
         setMetrics(prev => ({ ...prev, totalClients: data.totalClients }));
