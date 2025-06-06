@@ -8,9 +8,11 @@ function Menu() {
   const [items, setItems] = useState([]);
   
   const [selectedCategory, setSelectedCategory] = useState('Drink');
+  const apiUrl = process.env.REACT_APP_API_URL;
+
 
   useEffect(() => {
-    axios.get('http://localhost:8000/api/menu')
+    axios.get('${apiUrl}/api/menu')
       .then(res => setItems(res.data))
       .catch(err => console.error('Menu fetch error:', err));
   }, []);
