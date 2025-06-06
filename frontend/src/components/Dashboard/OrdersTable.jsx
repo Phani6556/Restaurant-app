@@ -4,10 +4,11 @@ import '../../styles/OrdersTable.css';
 
 function OrdersTable() {
   const [tables, setTables] = useState([]);
+  const apiUrl = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     const fetchTables = () => {
-      axios.get('http://localhost:8000/api/tables')
+      axios.get('${apiUrl}/api/tables')
         .then(res => setTables(res.data))
         .catch(err => console.error(err));
     };
