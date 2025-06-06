@@ -91,7 +91,7 @@ function Orders() {
     }
 
     try {
-      const res = await axios.put('${apiUrl}/api/orders/${orderId}`, { status: newStatus });
+      const res = await axios.put(`${apiUrl}/api/orders/${orderId}`, { status: newStatus });
       setOrders(prev => prev.map(o => o._id === orderId ? {
         ...res.data,
         type: res.data.type || res.data.orderType || '',
