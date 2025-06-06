@@ -21,7 +21,7 @@ function Orders() {
 
  const fetchChefs = async () => {
     try {
-      const res = await axios.get(\${apiUrl}/api/dashboard/chef-summary');
+      const res = await axios.get('${apiUrl}/api/dashboard/chef-summary');
       setChefs(res.data.chefs);
     } catch (err) {
        console.error('Error fetching chefs:', err);
@@ -31,7 +31,7 @@ function Orders() {
 
   const fetchTables = async () => {
     try {
-      const res = await axios.get(\${apiUrl}/api/tables');
+      const res = await axios.get('${apiUrl}/api/tables');
       setTables(res.data);
     } catch (err) {
       console.error('Error fetching tables:', err);
@@ -63,7 +63,7 @@ function Orders() {
 
   const fetchOrders = async () => {
     try {
-      const res = await axios.get(\${apiUrl}/api/orders');
+      const res = await axios.get('${apiUrl}/api/orders');
       const normalized = res.data.map(order => ({
         ...order,
         type: order.type || order.orderType || '',
@@ -91,7 +91,7 @@ function Orders() {
     }
 
     try {
-      const res = await axios.put(\${apiUrl}/api/orders/${orderId}`, { status: newStatus });
+      const res = await axios.put('${apiUrl}/api/orders/${orderId}`, { status: newStatus });
       setOrders(prev => prev.map(o => o._id === orderId ? {
         ...res.data,
         type: res.data.type || res.data.orderType || '',
@@ -115,11 +115,11 @@ function Orders() {
          const table = tables.find(t => t._id === tableId);
        if (!table) return;
 
-           await axios.put(\${apiUrl}/api/orders/${orderId}/assign-table`, {
+           await axios.put('${apiUrl}/api/orders/${orderId}/assign-table`, {
         tableNumber: table.tableNumber,
        });
 
-     await axios.patch(\${apiUrl}/api/tables/${tableId}/status`, { status: 'Reserved' });
+     await axios.patch('${apiUrl}/api/tables/${tableId}/status`, { status: 'Reserved' });
 
       fetchOrders();
       fetchTables();
@@ -130,7 +130,7 @@ function Orders() {
 
   const assignChef = async (orderId, chefId) => {
     try {
-      await axios.put(\${apiUrl}/api/orders/${orderId}/assign-chef`, { chefId });
+      await axios.put('${apiUrl}/api/orders/${orderId}/assign-chef`, { chefId });
       fetchOrders();
       fetchChefs();
     } catch (err) {
