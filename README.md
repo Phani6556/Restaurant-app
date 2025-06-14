@@ -10,8 +10,8 @@ A React-based restaurant management system that allows staff to manage orders, t
 - Real-time order updates using **Socket.IO**
 - Filters for **Order Type** and **Status**
 - View order items, timestamps, and cooking duration
-- **Assign Tables** to "Dine In" orders
-- **Assign Chefs** to orders dynamically based on least workload
+- **Assign Tables** to "Dine In" orders manually after getting orders from customer side app
+- **Assign Chefs** to orders manually based on least workload after getting orders from customer side app
 - Toggle **Picked Up/Not Picked Up** for Take Away orders
 - Reflects **table status** and **chef assignments** immediately
 
